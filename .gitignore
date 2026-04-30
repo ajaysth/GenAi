@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# environment variables (VERY IMPORTANT)
+.env
+
+# logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# build folders
+dist/
+build/
+
+# cache
+.cache/
+.pnpm-store/
+
+# IDE files
+.vscode/
+.idea/
+
+# system files
+*.swp
