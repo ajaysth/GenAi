@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react"
 import { AuthContext } from "./auth.context"
 
+
 type AuthProviderProps = {
     children: ReactNode
 }
@@ -14,7 +15,11 @@ interface User {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const [user, setUser] = useState<User | null>(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
+
+
+
+
 
     return (
         <AuthContext.Provider value={{ user, loading, setLoading, setUser }}>
