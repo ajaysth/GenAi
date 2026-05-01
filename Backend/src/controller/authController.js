@@ -12,7 +12,7 @@ const register = async (req, res) => {
     if (!username || !email || !password) {
         return res.status(400).json({
             success: false,
-            messsage: "Please fill all the data"
+            message: "Please fill all the data"
         })
     }
 
@@ -24,7 +24,7 @@ const register = async (req, res) => {
         if (isUserAlreadyRegistered) {
             return res.status(400).json({
                 success: false,
-                messsage: "Account already exists with email address or username"
+                message: "Account already exists with email address or username"
             })
         }
 
@@ -45,13 +45,22 @@ const register = async (req, res) => {
         res.cookie("token",token)
         res.status(201).json({
             success:true,
-            messsage:"User created successfully",
-            user:user
+            message:"User created successfully",
+            user:{
+                id: user._id,
+                username:user.username,
+                email:user.email
+            }
         })
 
 
     } catch (err) {
         console.log(err)
+        return res.status(500).json({
+        success:false,
+        message:"Server error in register",
+        error: err.message
+    })
     }
 }
 
@@ -94,11 +103,20 @@ const login = async (req,res)=>{
         res.status(200).json({
             success:true,
             message:"User logged in successfully",
-            user:user
+            user:{
+                id: user._id,
+                username:user.username,
+                email:user.email
+            }
         })
 
     }catch(err){
         console.log(err)
+        return res.status(500).json({
+        success:false,
+        message:"Server error in login",
+        error: err.message
+    })
     }
 }
 
