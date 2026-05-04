@@ -15,7 +15,7 @@ app.get("/",(req,res)=>{
 
 connectDb()
 
-generateInterviewReport({resume,jobDescription,selfDescription})
+// generateInterviewReport({resume,jobDescription,selfDescription})
 
 
 
