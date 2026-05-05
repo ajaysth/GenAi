@@ -174,7 +174,8 @@ Example of correct output:
       "focus": "Testing Skills",
       "tasks": ["Learn Jest and React Testing Library", "Write tests for 4-5 components", "Study Supertest for backend testing"]
     }
-  ]
+  ],
+  "title": "Mid-Level MERN Stack Developer (Frontend-leaning)"
 }
 
 Now generate the real report for this candidate using the exact same structure:

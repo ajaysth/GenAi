@@ -73,4 +73,46 @@ const generateInterviewReportController = async (req, res) => {
     }
 };
 
-export { generateInterviewReportController };
+const getInterviewReportBytIdController = async (req, res) => {
+    const {interviewId} = req.params
+
+    try{
+
+        const interviewReport = await interviewReportModel.findOne({_id:interviewId, user:req.user?.id})
+
+        if(!interviewReport){
+            return res.status(400).json({
+                success:false,
+                message:"Report not found"
+            })
+        }
+
+        return res.status(200).json({
+            success:true,
+            message:"Report found",
+            interviewReport
+        })
+
+    }catch(error){
+        console.error("Error in getInterviewReportBytIdController:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Server error while getting interview report",
+            error: error.message
+        });
+    }
+}
+
+
+const getAllInterviewReportController = async (req, res) => {
+
+    const interviewReports = await interviewReportModel.find({ user: req.user.id }).sort({ createdAt: -1 }).select("-resume -selfDescription -jobDescription -__v -technicalQuestions -behavioralQuestions -skillGaps -preparationPlan")
+
+    res.status(200).json({
+        message: "Interview reports fetched successfully.",
+        interviewReports
+    })
+}
+
+
+export { generateInterviewReportController, getInterviewReportBytIdController, getAllInterviewReportController };
