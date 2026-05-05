@@ -214,4 +214,3 @@ Job Description: ${shortJD}
 }
 
 export default generateInterviewReport
-

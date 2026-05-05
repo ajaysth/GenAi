@@ -1,5 +1,5 @@
-import app from "./src/app.js"
 import "dotenv/config"
+import app from "./src/app.js"
 import connectDb from "./src/config/database.js"
 import generateInterviewReport from "./src/services/ai.service.js"
 import { resume,jobDescription,selfDescription } from "./src/services/temp.js"
@@ -15,7 +15,7 @@ app.get("/",(req,res)=>{
 
 connectDb()
 
-// generateInterviewReport({resume,jobDescription,selfDescription})
+// await generateInterviewReport({resume,jobDescription,selfDescription})
 
 
 

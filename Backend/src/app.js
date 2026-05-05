@@ -5,6 +5,7 @@ import cors from "cors"
 
 // import all routes heree
 import authRouter from "./routes/authRoute.js"
+import interviewRouter from "./routes/interviewRoute.js"
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(cors({
 
 // use all routes
 app.use("/api/auth",authRouter)
+app.use("/api/interview",interviewRouter)
 
 
 
