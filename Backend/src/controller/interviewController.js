@@ -73,7 +73,7 @@ const generateInterviewReportController = async (req, res) => {
     }
 };
 
-const getInterviewReportBytIdController = async (req, res) => {
+const getInterviewReportByIdController = async (req, res) => {
     const {interviewId} = req.params
 
     try{
@@ -115,4 +115,4 @@ const getAllInterviewReportController = async (req, res) => {
 }
 
 
-export { generateInterviewReportController, getInterviewReportBytIdController, getAllInterviewReportController };
+export { generateInterviewReportController, getInterviewReportByIdController, getAllInterviewReportController };

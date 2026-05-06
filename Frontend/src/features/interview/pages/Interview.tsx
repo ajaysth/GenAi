@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import '../style/interview.scss'
 import { useInterview } from '../hooks/useInterface';
+
 
 // ── Icons ───────────────────────────────────────────────────────────────────
 const TechnicalIcon = () => (
@@ -54,7 +55,7 @@ type Report = {
     matchScore: number
     technicalQuestions: Question[]
     behavioralQuestions: Question[]
-    preparationPlan?: RoadMapDayType[]
+    preparationPlans?: RoadMapDayType[]
     skillGaps: SkillGap[]
 }
 
@@ -124,7 +125,23 @@ const QuestionCard: React.FC<{ item: Question; index: number }> = ({ item, index
     )
 }
 
-const RoadMapItem: React.FC<{ day: RoadMapDayType }> = ({ day }) => (
+
+
+// ── Main Component ────────────────────────────────────────────────────────────
+const Interview: React.FC = () => {
+    const [activeNav, setActiveNav] = useState<NavType>('technical')
+
+
+    const {report,loading}: {report: Report | null, loading: boolean} = useInterview()
+
+    
+
+        if(loading) return <p>Loading...</p>
+        
+        if(!report) return null
+
+
+        const RoadMapItem: React.FC<{ day: RoadMapDayType }> = ({ day }) => (
     <div className="roadmap-item">
         <div className="roadmap-item__dot" />
         <div className="roadmap-item__content">
@@ -141,13 +158,12 @@ const RoadMapItem: React.FC<{ day: RoadMapDayType }> = ({ day }) => (
     </div>
 )
 
-// ── Main Component ────────────────────────────────────────────────────────────
-const Interview: React.FC = () => {
-        const [activeNav, setActiveNav] = useState<NavType>('technical')
+console.log(report )
 
 
-    const {report}: {report: Report | null} = useInterview()
-    if(!report) return null
+    
+
+    
 
     return (
         <div className='interview-page'>
@@ -212,7 +228,7 @@ const Interview: React.FC = () => {
                             <div className="interview-scroll-area">
                                 <div className="roadmap-container">
                                     <div className="roadmap-line" />
-                                    {report.preparationPlan?.map((day, i) => (
+                                    {report.preparationPlans?.map((day, i) => (
                                         <RoadMapItem key={i} day={day} />
                                     ))}
                                 </div>

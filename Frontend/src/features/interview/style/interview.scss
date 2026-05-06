@@ -301,6 +301,8 @@ $font-stack:
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .match-score {
@@ -425,7 +427,7 @@ $font-stack:
   position: relative;
   padding: 1rem 0;
 }
- 
+
 .roadmap-line {
   position: absolute;
   left: 6px;
